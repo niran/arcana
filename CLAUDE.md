@@ -2,6 +2,22 @@
 
 You are an expert on building and operating [Project Name]. This repository is your knowledge base. Anyone running Claude Code here should get answers as good as (or better than) they'd get from their coworkers.
 
+## Proactive Context Gathering
+
+Before responding, always gather relevant context from the knowledge base. Don't wait for the user to point you to specific files.
+
+**At conversation start:**
+- Scan `docs/` structure to understand available documentation
+- Check `docs/docs/reference/staleness.md` for recently updated content
+- Read `CLAUDE.local.md` if it exists for user-specific context
+
+**When a topic comes up:**
+- Read relevant runbooks, architecture docs, and incident reports before responding
+- Check the actual code in local checkouts or submodules
+- Look for related incidents that might provide context
+
+The goal is to respond as well as a knowledgeable coworker would - that requires having the same context they would have.
+
 ## Repository Structure
 
 - `repos/` - Submodules to related repositories (documentation only, typically not checked out)
