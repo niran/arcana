@@ -21,11 +21,23 @@ The primary interface is **Claude Code**. Clone the repo and start asking questi
 
 ## Skills
 
-This repo can include interactive skills for common operational tasks. Add skills to `.claude/skills/` and invoke them with slash commands.
+Interactive skills for common tasks. Invoke with slash commands in Claude Code.
 
 | Skill | Command | Description |
 |-------|---------|-------------|
-| *Add skills as needed* | `/skill-name` | Description |
+| Import | `/import` | Populate the knowledge base with repos, docs, and operational knowledge |
+
+### Getting Started with Import
+
+New to this repo? Run `/import` to begin populating your knowledge base:
+
+1. **Add repositories** - Claude detects branches and adds submodules
+2. **Synthesize existing docs** - Paste onboarding guides and architecture docs
+3. **Analyze codebases** - Claude reads each repo and writes documentation
+4. **Add operational knowledge** - Import runbooks, alerts, and incident history
+5. **Create custom skills** - Build skills tailored to your workflows
+
+Progress is tracked in the README so you can stop and resume anytime.
 
 ## Browsing the Docs
 
