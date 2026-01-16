@@ -25,9 +25,17 @@ Interactive skills for common tasks. Invoke with slash commands in Claude Code.
 
 | Skill | Command | Description |
 |-------|---------|-------------|
-| Import | `/import` | Populate the knowledge base with repos, docs, and operational knowledge |
 | Writing Coach | `/writing-coach` | Collaborative thinking partner to work through ideas, overcome blocks, and clarify thinking |
 | Recent Activity | `/recent-activity` | See recent commits across all team repositories |
+
+### Arcana Maintenance
+
+Skills for updating this knowledge base:
+
+| Skill | Command | Description |
+|-------|---------|-------------|
+| Import | `/import` | Populate the knowledge base by importing repos, docs, and operational knowledge |
+| Update Knowledge | `/update-knowledge` | Check repos for changes since last evaluation and update documentation |
 
 ### Writing Coach
 
