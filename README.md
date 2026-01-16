@@ -26,6 +26,27 @@ Interactive skills for common tasks. Invoke with slash commands in Claude Code.
 | Skill | Command | Description |
 |-------|---------|-------------|
 | Import | `/import` | Populate the knowledge base with repos, docs, and operational knowledge |
+| Coach | `/coach` | Collaborative thinking partner to work through ideas, overcome blocks, and clarify thinking |
+| Recent Activity | `/recent-activity` | See recent commits across all team repositories |
+
+### Coach
+
+Run `/coach` when you need a thinking partner. Claude will:
+
+- Check recent blog posts for team-level topics worth discussing
+- Offer to look at your personal recent commits for conversation starters
+- Ask questions to help pull ideas out of your head
+- Write up the conversation as a document when you're ready
+
+The goal is to make writer's block and unclear thinking nearly impossible. Claude ends every response with a question to keep you moving forward.
+
+### Recent Activity
+
+Run `/recent-activity` to see what's been happening across all team repos. Useful for:
+
+- Catching up after time away
+- Seeing what a teammate has been working on (`--author "name"`)
+- Finding context for a conversation
 
 ### Getting Started with Import
 
