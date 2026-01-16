@@ -30,7 +30,48 @@ When this skill is invoked:
 
 Check if `## Import Progress` exists in README.md:
 - If it exists, read it to determine current phase and pending tasks
-- If not, this is a fresh start - proceed to Phase 1
+- If not, this is a fresh start - proceed to Initial Setup
+
+### Initial Setup: Team Name
+
+**Goal:** Replace all `[Project Name]` placeholders with the actual team/project name.
+
+Before starting Phase 1, check if `[Project Name]` placeholders still exist:
+
+```bash
+grep -r "\[Project Name\]" --include="*.md" --include="*.js" . 2>/dev/null | head -5
+```
+
+If placeholders exist:
+
+1. Ask the user for their team/project name:
+
+   ```
+   Before we begin, what's your team or project name?
+
+   This will replace "[Project Name]" throughout the knowledge base.
+   Examples: "Payments", "Infrastructure", "Mobile App", "Acme Corp"
+   ```
+
+2. Replace `[Project Name]` in all files:
+   - `README.md`
+   - `CLAUDE.md`
+   - `docs/docusaurus.config.js`
+   - `docs/docs/intro.md`
+   - `docs/blog/2025-01-01-welcome/index.md`
+   - `docs/docs/specs/overview.md`
+   - `docs/docs/reference/repos.md`
+   - `docs/docs/runbooks/overview.md`
+   - `docs/docs/architecture/overview.md`
+
+3. Commit the change:
+   ```
+   Set project name to <name>
+
+   Replaced [Project Name] placeholders throughout the knowledge base.
+   ```
+
+4. Proceed to Phase 1
 
 ### Phase 1: Repository Discovery
 
