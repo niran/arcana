@@ -1,0 +1,10 @@
+# Local Claude configuration
+CLAUDE.local.md
+
+# Docusaurus
+docs/node_modules/
+docs/.docusaurus/
+docs/build/
+
+# OS files
+.DS_Store

@@ -1,0 +1,12 @@
+# Add authors here
+# Example:
+#
+# author-key:
+#   name: Author Name
+#   title: Role @ Company
+#   url: https://github.com/username
+#   image_url: https://github.com/username.png
+
+default:
+  name: Team Member
+  title: Contributor
