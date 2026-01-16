@@ -25,66 +25,47 @@ When this skill is invoked:
 
 ### Opening the Conversation
 
-Before asking anything, gather context. Your opening should be informed, not generic.
-
-**Step 1: Check conversation context**
-
-If there's already context in the current conversation (they mentioned a problem, shared some code, discussed a topic), use it. Make an assumption about what they might want to think through and ask about it directly:
+**If there's conversation context**, use it. Make an assumption about what they might want to think through:
 
 ```
 It sounds like you're working through [topic from conversation]. Are you trying to
 figure out [specific aspect], or is there something else about it that's on your mind?
 ```
 
-**Step 2: If no conversation context, gather it**
+**If this is a fresh conversation**, gather team context first:
 
-Silently check these sources to understand what's been happening.
+1. Check `docs/blog/` for recent posts - incidents, decisions, insights from the team
+2. Note any themes or topics that might be worth discussing
 
-First, identify the user by running `git config user.name` and `git config user.email`. Use these to filter commits by author when looking at their personal work.
-
-1. **The user's recent commits to team repos** - Run this command now:
-   ```bash
-   .claude/skills/coach/scripts/recent-commits.sh --author "<user email>"
-   ```
-   Do not skip this step. Execute the script and read its output before proceeding. The output includes dates - prioritize the most recent commits (last few days) when forming your opening question.
-
-2. **Recent blog posts** - Check `docs/blog/` for recent posts. Look at incidents the team has dealt with, decisions that have been made, and insights others have shared. Any of these might be on the user's mind even if they didn't write them.
-
-3. **The user's recent commits to the knowledge base** - Run `git log --oneline -10 --author="<user email>"` in the arcana repo to see what documentation they've been updating
-
-4. **Open files in IDE** - If they have files open, those might indicate what's on their mind
-
-**Step 3: Open with context**
-
-If you found something relevant, start there:
+Then open with team-level topics plus the option to look at their personal work:
 
 ```
-I see you've been working on [thing from commits/blog]. Is that what you want to
-think through, or is something else on your mind?
+What's on your mind?
+
+Here are some things happening with the team that might be worth thinking through:
+
+1. [Recent incident or decision from blog]
+2. [Another recent topic from blog]
+3. [Third topic if available]
+
+Or:
+4. Look at what I've been working on personally
+5. Something else entirely
 ```
 
-Or offer a few options based on what you found:
+If they choose option 4, run the `/recent-activity` skill to see their recent commits across team repos. Use the output to suggest conversation topics based on their most recent work (prioritize the last few days).
+
+**If the blog is empty or doesn't have useful conversation starters** (e.g., posts are old, too routine, or not discussion-worthy), fall back to:
 
 ```
-Looking at your recent work, I see a few things you might want to think through:
+What's on your mind?
 
-1. [Recent commit topic] - you made some changes here recently
-2. [Blog post topic] - you wrote about this last week
-3. [Documentation update] - you've been documenting this area
-4. Something else entirely
-
-Which of these is on your mind, if any?
+1. I have something specific I want to think through
+2. Help me find a starting point - look at what I've been working on recently
+3. I'm not sure yet, let's just talk
 ```
 
-**Step 4: Fall back to open-ended only when necessary**
-
-If you genuinely have no context (empty knowledge base, no recent commits, no conversation history), then ask openly:
-
-```
-What's on your mind? Are you trying to write something, plan something, decide something, or just think through an idea?
-```
-
-If they seem unsure or give a vague response, offer concrete options:
+**If they seem stuck** after an open-ended question, offer concrete options:
 
 ```
 Sometimes it helps to start with what's making this hard. Is it:
