@@ -1,9 +1,9 @@
 ---
-name: coach
+name: writing-coach
 description: Have a collaborative conversation that helps you think through ideas, overcome blocks, and clarify your thinking. Use when you need a thought partner to work through something.
 ---
 
-# Coach Skill
+# Writing Coach Skill
 
 A conversational skill that acts as your thinking partner. Through questions and dialogue, this skill helps pull ideas out of your head, overcome blocks, and clarify your thinking. When you're ready, it can synthesize the conversation into a document that captures your ideas in your voice.
 

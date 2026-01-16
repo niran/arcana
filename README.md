@@ -26,12 +26,12 @@ Interactive skills for common tasks. Invoke with slash commands in Claude Code.
 | Skill | Command | Description |
 |-------|---------|-------------|
 | Import | `/import` | Populate the knowledge base with repos, docs, and operational knowledge |
-| Coach | `/coach` | Collaborative thinking partner to work through ideas, overcome blocks, and clarify thinking |
+| Writing Coach | `/writing-coach` | Collaborative thinking partner to work through ideas, overcome blocks, and clarify thinking |
 | Recent Activity | `/recent-activity` | See recent commits across all team repositories |
 
-### Coach
+### Writing Coach
 
-Run `/coach` when you need a thinking partner. Claude will:
+Run `/writing-coach` when you need a thinking partner. Claude will:
 
 - Check recent blog posts for team-level topics worth discussing
 - Offer to look at your personal recent commits for conversation starters
