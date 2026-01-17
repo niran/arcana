@@ -35,6 +35,16 @@ Configuration reference and documentation sources.
 
 Incident reports, contributor insights, and decision rationale.
 
+### Skills
+
+Interactive commands for common tasks:
+- `/recent-activity` - See recent commits across team repositories
+- `/writing-coach` - Thinking partner for working through ideas and blocks
+- `/import` - Populate the knowledge base with repos and docs
+- `/update-knowledge` - Check repos for changes and update documentation
+
+Skills also work with other AI tools. In Codex CLI, Gemini CLI, or similar, reference the skill file directly (e.g., `Use .claude/skills/writing-coach/SKILL.md`).
+
 ## Philosophy
 
 **Code is the source of truth.** This documentation supplements code understanding but should never contradict it. When docs are outdated, update them.

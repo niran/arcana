@@ -37,6 +37,14 @@ Skills for updating this knowledge base:
 | Import | `/import` | Populate the knowledge base by importing repos, docs, and operational knowledge |
 | Update Knowledge | `/update-knowledge` | Check repos for changes since last evaluation and update documentation |
 
+### Using Skills with Other AI Tools
+
+Skills work with any AI assistant that can read markdown files. In Codex CLI, Gemini CLI, or similar tools, reference the skill file directly:
+
+```
+Use .claude/skills/writing-coach/SKILL.md
+```
+
 ### Writing Coach
 
 Run `/writing-coach` when you need a thinking partner. Claude will:
