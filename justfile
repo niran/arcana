@@ -81,10 +81,17 @@ update-submodules:
         latest=$(git ls-remote "$url" "refs/heads/$branch" 2>/dev/null | cut -f1)
 
         if [ -z "$latest" ]; then
-            echo "  $path: could not fetch latest from $branch"
+            echo "⚠️  $path: could not fetch latest from $branch"
         elif [ "$current" != "$latest" ]; then
+            # Check if submodule is checked out (has a .git file/directory)
+            if [ -e "$path/.git" ]; then
+                # Submodule is checked out - fetch and checkout the new commit
+                echo "📦 $path: checked out, updating working tree..."
+                git -C "$path" fetch origin "$branch"
+                git -C "$path" checkout "$latest"
+            fi
             git update-index --cacheinfo 160000,"$latest","$path"
-            echo " $path: updated to ${latest:0:12}"
+            echo "✅ $path: updated to ${latest:0:12}"
             updated=$((updated + 1))
         fi
     done < <(git config --file .gitmodules --get-regexp '^submodule\..*\.path$' 2>/dev/null || true)
