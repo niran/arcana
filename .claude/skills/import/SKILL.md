@@ -234,7 +234,11 @@ For each repository in the Import Progress checklist:
 
 1. **Locate the code:**
    - Check CLAUDE.local.md for user-specified paths
-   - Search ~/workspace, ~/code, ~/projects for the repo
+   - Search by git remote origin (directory names are unreliable):
+     ```bash
+     .claude/scripts/find-repos.sh "<repo-name>" ~ 5
+     ```
+   - Use paths marked `[PREFERRED]` (main/master branches) for canonical code
    - If not found, ask the user where it is or clone it
 
 2. **Initial analysis:**
