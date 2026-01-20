@@ -29,11 +29,19 @@ The submodules document which repos exist but aren't meant to be checked out her
 
 **Search order for code:**
 1. Check `CLAUDE.local.md` for user-specified workspace paths (highest priority)
-2. Search `~/workspace` for matching repo names
-3. Search common locations: `~/code`, `~/projects`, `~/src`, `~/dev`
-4. As a last resort, clone the repo directly into the submodule path
+2. Search for local checkouts by matching git remote origin (see below)
+3. As a last resort, clone the repo directly into the submodule path
 
-When searching for a repo, match by the repo name. The local checkout may have a different directory name than the submodule path.
+**Finding repos by origin URL:** Directory names are unreliable—different repos might be checked out with the same local directory name. Instead, search for repos by matching their git remote origin:
+
+```bash
+# Find repos by origin URL (supports bare repos and worktrees)
+.claude/scripts/find-repos.sh "<repo-name>" ~ 5
+```
+
+The script filters by origin pattern, lists all worktrees for matching repos, and marks `main`/`master` branches as `[PREFERRED]`. Use preferred paths for reading canonical code—feature branches may have uncommitted or experimental changes.
+
+If no match is found, ask the user for the path or clone the repo.
 
 **Important:** Submodules are configured with `update = none` in `.gitmodules`, so `git submodule update --init` will skip them. To check out a submodule, override the update strategy:
 ```bash
