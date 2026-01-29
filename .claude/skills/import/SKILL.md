@@ -238,8 +238,9 @@ For each repository in the Import Progress checklist:
      ```bash
      .claude/scripts/find-repos.sh "<repo-name>" ~ 5
      ```
-   - Use paths marked `[PREFERRED]` (main/master branches) for canonical code
-   - If not found, ask the user where it is or clone it
+   - Use paths marked `[PREFERRED]` as candidates, but only treat a local checkout as canonical if it's on the canonical default branch, clean (`git status` empty), and not behind the canonical remote (fast-forward-only update is OK)
+   - If the local checkout isn't trivially canonical (dirty tree, wrong branch, behind, fork ambiguity), prefer checking out the submodule instead: `git submodule update --checkout repos/<repo>`
+   - If no local checkout is found and no submodule exists, ask the user where it is or clone it
 
 2. **Initial analysis:**
    - Read README, CLAUDE.md, any docs/ folder

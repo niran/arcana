@@ -30,7 +30,8 @@ The submodules document which repos exist but aren't meant to be checked out her
 **Search order for code:**
 1. Check `CLAUDE.local.md` for user-specified workspace paths (highest priority)
 2. Search for local checkouts by matching git remote origin (see below)
-3. As a last resort, clone the repo directly into the submodule path
+3. If the local checkout is not trivially canonical, check out the submodule instead (see below)
+4. If the repo is not present as a submodule, ask the user for the path or clone it
 
 **Finding repos by origin URL:** Directory names are unreliable—different repos might be checked out with the same local directory name. Instead, search for repos by matching their git remote origin:
 
@@ -39,9 +40,13 @@ The submodules document which repos exist but aren't meant to be checked out her
 .claude/scripts/find-repos.sh "<repo-name>" ~ 5
 ```
 
-The script filters by origin pattern, lists all worktrees for matching repos, and marks `main`/`master` branches as `[PREFERRED]`. Use preferred paths for reading canonical code—feature branches may have uncommitted or experimental changes.
+The script filters by origin pattern, lists all worktrees for matching repos, and marks `main`/`master` branches as `[PREFERRED]`. Treat these as *candidates*—local checkouts can be behind upstream, on forks, or have uncommitted changes.
 
-If no match is found, ask the user for the path or clone the repo.
+**When to use a local checkout vs submodule checkout:**
+- Use the user's local checkout *as canonical code* only when it's on the canonical default branch, clean (`git status` empty), and not behind the canonical remote (a fast-forward-only update is OK).
+- Give up and use a submodule checkout if anything would require switching branches, pulling with anything other than `--ff-only`, rebasing/merging, or touching a dirty working tree.
+
+**Never risk user work:** Do not run destructive git operations (`reset --hard`, cleaning untracked files, force checkouts). If the local checkout isn't trivially canonical, prefer `git submodule update --checkout ...` rather than asking the user to change their workspace.
 
 **Important:** Submodules are configured with `update = none` in `.gitmodules`, so `git submodule update --init` will skip them. To check out a submodule, override the update strategy:
 ```bash

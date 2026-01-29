@@ -107,7 +107,7 @@ When the user chooses to review a repo:
 1. **Access the latest code:**
    - Use the GitHub API to read files directly (avoids local checkout issues)
    - Or check out the submodule: `git submodule update --checkout <path>`
-   - Avoid user's local checkouts - they may be on feature branches or have uncommitted changes
+   - Use user's local checkouts only if they are trivially canonical (clean, on canonical default branch, not behind upstream); otherwise avoid touching them
 
 2. **Analyze significant changes:**
    - Focus on commits that change behavior, APIs, or architecture
