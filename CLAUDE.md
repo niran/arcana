@@ -77,6 +77,12 @@ After evaluating a repo or updating documentation based on code review, update t
 
 **Keep README.md and docs/docs/intro.md in sync.** These files share overlapping content (quick start, example session, skills list, contributing guidelines). When updating one, check if the other needs the same change. The README is for GitHub visitors; the intro is for docs readers. They should tell the same story.
 
+**Keep the skills manifest up to date.** When you add, remove, rename, or materially change a skill in `.claude/skills/` (especially `name:` / `description:` frontmatter or scripts), regenerate and commit the manifests:
+
+```bash
+.claude/scripts/skills-manifest.sh --write
+```
+
 When documenting incidents or other events:
 - Never assign arbitrary values (severity levels, impact metrics) unless they were actually assigned
 - If you need to estimate something, clearly mark it as "Claude's estimate" or similar

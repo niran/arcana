@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "skills": [
+    {
+      "command": "/import",
+      "description": "Populate your Arcana knowledge base by importing repositories, existing documentation, and operational knowledge. Use this when setting up a new Arcana repo or expanding scope.",
+      "name": "import",
+      "scripts": [
+        ".claude/skills/import/scripts/add-repo.sh",
+        ".claude/skills/import/scripts/find-repos.sh",
+        ".claude/skills/import/scripts/scan-org.sh"
+      ],
+      "skill_md_path": ".claude/skills/import/SKILL.md"
+    },
+    {
+      "command": "/recent-activity",
+      "description": "Show recent commits across all team repositories. Use to see what you or teammates have been working on.",
+      "name": "recent-activity",
+      "scripts": [
+        ".claude/skills/recent-activity/scripts/recent-commits.sh"
+      ],
+      "skill_md_path": ".claude/skills/recent-activity/SKILL.md"
+    },
+    {
+      "command": "/update-knowledge",
+      "description": "Update your knowledge base using changes in repos since the last evaluation. Checks what changed, helps update documentation, and records the new evaluation in the staleness log.",
+      "name": "update-knowledge",
+      "scripts": [
+        ".claude/skills/update-knowledge/scripts/parse-staleness.sh",
+        ".claude/skills/update-knowledge/scripts/repo-changes.sh"
+      ],
+      "skill_md_path": ".claude/skills/update-knowledge/SKILL.md"
+    },
+    {
+      "command": "/writing-coach",
+      "description": "Have a collaborative conversation that helps you think through ideas, overcome blocks, and clarify your thinking. Use when you need a thought partner to work through something.",
+      "name": "writing-coach",
+      "scripts": [],
+      "skill_md_path": ".claude/skills/writing-coach/SKILL.md"
+    }
+  ]
+}
